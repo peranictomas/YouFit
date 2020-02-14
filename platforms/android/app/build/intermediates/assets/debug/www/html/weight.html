@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Circuit</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <style>
+        #mainPage{
+            background-color:  #D9D9D9;
+        }
+        .flex-container
+        {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            align-content: space-between;
+        }
+        .flex-container2
+        {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            align-content: space-between;
+        }
+        #output
+        {
+
+        }
+        .spacing{
+            margin-left: 5%;
+        }
+        img{
+            position: fixed;
+            top: 95%;
+            left: 50%;
+            margin-top: -486.4px;
+            margin-left: -256px;
+            z-index: -1;
+            opacity: 0.2;
+        }
+        .font{
+            font-family: "Arial Black", Gadget, sans-serif;
+            font-size: 1.2em;
+        }
+        .font2{
+            font-family: "Arial", Gadget, sans-serif;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+
+<body id="mainPage" >
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-left">
+    <a class="navbar-brand" href="../index.html"><i class="fas fa-heartbeat"></i> You.Fit</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="alarm.html">Alarm</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="stopwatch.html">Stopwatch</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="dumbbell.html">Workout</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="map.html">Map</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="diet.html">Diet</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<div class="flex-container2 font">
+    <div class="form-group">
+        <label for="user">Name:</label>
+        <input type="text" class="form-control" id="user">
+    </div>
+    <div class="form-group">
+        <label for="weight">Weight:</label>
+        <input type="number" min="0" class="form-control" id="weight">
+    </div>
+    <div class="form-group">
+        <label for="date">Date:</label>
+        <input class="form-control" type="date" id="date" name="trip-start" value="YYYY-MM-DD" min="2000-01-01" max=" " onkeydown="return false">
+    </div>
+</div>
+<br>
+<br>
+<div class="flex-container">
+    <button id="btn1" type="button" class="btn btn-info">Submit</button>
+    <button id="btn2" type="button" class="btn btn-warning spacing">Search</button>
+    <button id="btn3" type="button" class="btn btn-danger spacing">Clear Search</button>
+</div>
+<br>
+<br>
+<img class="center-fit" src="../img/scale.png">
+<div class="flex-container2">
+    <div id="output" class="font2">
+    </div>
+</div>
+<script>
+
+    $( document ).ready(function()
+    {
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();
+        if(dd<10){
+            dd='0'+dd
+        }
+        if(mm<10){
+            mm='0'+mm
+        }
+        today = yyyy+'-'+mm+'-'+dd;
+        document.getElementById("date").setAttribute("max", today);
+
+        var $name = $("#user");
+        var $weight = $("#weight");
+        var $date = $("#date");
+        var $btn1 = $("#btn1");
+        var $btn2 = $("#btn2");
+        var $btn3 = $("#btn3");
+        var $output = $("#output");
+        var click_event = $.support.touch ? "tap" : "click";
+        var dbSupported=("indexedDB" in window) ? true : false;
+
+        function showPopup(message) {
+            $output.html("<p>" + message + "</p>").parent().show(1000);
+            setTimeout(  function() { $output.parent().fadeOut(1000);}, 2000 );
+        };
+
+        if (dbSupported)
+        {
+            var openRequest=window.indexedDB.open("YouFit", 1);
+            openRequest.onupgradeneeded = function(event) {
+                console.log("DB upgrading");
+                db=openRequest.result;
+                if (!db.objectStoreNames.contains("Athletes")) {
+                    db.createObjectStore("Athletes", {keyPath:"time"});
+                }
+            };
+            openRequest.onsuccess=function(event) {
+                console.log("DB success");
+                db=openRequest.result;
+            };
+            openRequest.onerror=function(event) {
+                console.log("DB error");
+                console.dir(event);
+            };
+        }
+        $btn1.on(click_event,function () {
+            var currentdate = new Date();
+            var datetime = "" + currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/"
+                + currentdate.getFullYear() + " @ "
+                + currentdate.getHours() + ":"
+                + currentdate.getMinutes() + ":"
+                + currentdate.getSeconds();
+
+            var name = $name.val();
+            var weight = $weight.val();
+            var date = $date.val();
+            var errMsg="";
+
+            if(name.length<1)
+            {
+                errMsg += 'Athlete name cannot be empty <br>';
+            }
+            if(weight.length<1 || parseInt(weight) < 0)
+            {
+                errMsg += 'Athlete weight cannot be empty or negative <br>';
+            }
+            if(date=="")
+            {
+                errMsg += 'Date cannot be empty';
+            }
+            if(errMsg.length>1){
+                showPopup(errMsg);
+                return true;
+            }
+            var athlete = {time:datetime, name:name, weight:weight, date:date};
+
+            var transaction = db.transaction(["Athletes"], "readwrite");
+
+            transaction.oncomplete = function (event) {
+                console.log("Transaction Complete");
+            };
+
+            transaction.onerror=function (event) {
+                console.log("Transaction Failed");
+            };
+            var storeRequest = transaction.objectStore("Athletes").add(athlete);
+            storeRequest.onsuccess =function() {
+                showPopup("Athlete Info Saved");
+            };
+            storeRequest.onerror=function() {
+                showPopup("Database Error: cannot save Info");
+            };
+            $name.val("");
+            $weight.val("");
+            $date.val("");
+            setTimeout(function()
+            {
+                location.reload();
+            }, 750);
+        });
+
+        $btn2.on(click_event, function(){
+            var name = $name.val();
+            if (name.length<1)
+            {
+                showPopup("name cannot be empty");
+                return true;
+            }
+
+            var transaction = db.transaction(['Athletes'], 'readonly');
+            var objectStore = transaction.objectStore('Athletes');
+
+            objectStore.openCursor().onsuccess = function(event) {
+                var cursor = event.target.result;
+                if(cursor)
+                {
+                    if(cursor.value.name == name)
+                    {
+                        $("#output").prepend("<p><strong>Name:</strong> "+cursor.value.name+" <strong>      Weight:</strong> "+cursor.value.weight+" <strong>       Date:</strong> "+cursor.value.date+"</p>")
+                    }
+                    cursor.continue();
+                }
+                else
+                {
+                    console.log('Entries all displayed.');
+                }
+            };
+            $name.val("");
+        });
+        $btn3.on(click_event, function(){
+            $output.find("p").remove();
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Find A Gym</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <style>
+        #map-canvas
+        {
+            width: 100%;
+            height: 100%;
+        }
+        body, html{
+            height: 100%;
+
+        }
+    </style>
+</head>
+
+<body >
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-left">
+    <a class="navbar-brand" href="../index.html"><i class="fas fa-heartbeat"></i> You.Fit</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="alarm.html">Alarm</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="stopwatch.html">Stopwatch</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="dumbbell.html">Workout</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="weight.html">Weight</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="diet.html">Diet</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+</div>
+<div id="map-canvas"></div>
+<script>
+    //https://developers.google.com/maps/documentation/
+    //Map taken from https://developers.google.com/maps/documentation/javascript/examples/map-geolocation
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+        navigator.geolocation.getCurrentPosition(updatePosition, onError);
+    }
+
+    function onError(error) {
+        alert('code: '    + error.code    + '\n' +
+            'message: ' + error.message + '\n');
+    }
+    window.lat = 43.4134;
+    window.lng = -79.7060;
+    window.lat2 = 43.3485;
+    window.lng2 = -79.7936;
+    window.lat3 = 43.5962;
+    window.lng3 = -79.7838;
+    window.lat4 = 43.6964;
+    window.lng4 = -79.8010;
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(updatePosition);
+        }
+        return null;
+    };
+
+    function updatePosition(position) {
+        if (position) {
+            window.lat = position.coords.latitude;
+            window.lng = position.coords.longitude;
+
+            window.lat2 = position.coords.latitude;
+            window.lng2 = position.coords.longitude;
+
+            window.lat3 = position.coords.latitude;
+            window.lng3 = position.coords.longitude;
+
+            window.lat4 = position.coords.latitude;
+            window.lng4 = position.coords.longitude;
+        }
+    }
+    setInterval(function(){updatePosition(getLocation());}, 10000);
+
+    var map;
+    var mark, mark2, mark3, mark4;
+
+    var initialize = function() {
+        map = new google.maps.Map(document.getElementById('map-canvas'), {
+            center: {lat: lat, lng: lng},
+            zoom: 14
+        });
+
+        mark = new google.maps.Marker({position:{lat:lat, lng:lng}, map:map});
+        mark2 = new google.maps.Marker({position:{lat:lat2, lng:lng2}, map:map});
+        mark3 = new google.maps.Marker({position:{lat:lat3, lng:lng3}, map:map});
+        mark4 = new google.maps.Marker({position:{lat:lat4, lng:lng4}, map:map});
+    };
+
+    window.initialize = initialize;
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3-lh4LiCXQLhGptE3kT8FK9SYx3o_1WA&callback=initialize" async defer></script>
+</body>
+</html>

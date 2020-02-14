@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alarm</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/flipclock.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <script src="/assets/js/libs/jquery.js"></script>
+    <script src="/assets/js/flipclock/flipclock.min.js"></script>
+
+</head>
+<style>
+    #mainPage{
+        background-color: #D9D9D9;
+    }
+    .flex-container{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        align-content: space-between;
+    }
+    #myclock{
+        font-family: "Arial Black", Gadget, sans-serif;
+        font-size: 5em;
+    }
+</style>
+
+<body id="mainPage">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-left">
+    <a class="navbar-brand" href="../index.html"><i class="fas fa-heartbeat"></i> You.Fit</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="stopwatch.html">Stopwatch</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="dumbbell.html">Workout</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="map.html">Map</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="weight.html">Weight</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="diet.html">Diet</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<div id="myclock" class="flex-container"></div>
+<div class="flex-container">
+<input type="datetime-local" id="alarmTime"/>
+</div>
+<br>
+<div class="flex-container">
+<button onclick="setAlarm(this);" id="alarmButton" class="btn btn-info">Set Alarm</button>
+</div>
+<div id="alarmOptions"style="display:none" class="flex-container">
+    <button onclick="stopAlarm();" class="btn btn-warning">Stop Alarm</button>
+</div>
+</body>
+
+<!--
+used for learning how to set an alarm
+https://www.youtube.com/watch?v=Kcvg0jXwrvU
+-->
+
+<script>
+    Notification.requestPermission();
+    var message;
+
+        function show24Time(){
+            var date = new Date();
+            var h=date.getHours();
+            var m =date.getMinutes();
+            var s =date.getSeconds();
+            var time;
+
+            h = (h < 10) ? "0" + h : h;
+            m = (m < 10) ? "0" + m : m;
+            s = (s < 10) ? "0" + s : s;
+
+
+            time = h + ":" + m + ":" + s;
+
+            document.getElementById("myclock").innerText=time;
+
+            setTimeout(show24Time, 1000);
+        }
+
+        show24Time();
+
+        var alarmSound=new Audio();
+        alarmSound.src="alarm.mp3";
+        var alarmTimer;
+
+    function setAlarm(button){
+        var ms = document.getElementById("alarmTime").valueAsNumber;
+        if (isNaN(ms)) {
+            alert("Invalid Date");
+            return;
+        }
+        var alarm = new Date(ms);
+        var alarmTime = new Date(alarm.getUTCFullYear(), alarm.getUTCMonth(), alarm.getUTCDate(), alarm.getUTCHours(), alarm.getUTCMinutes(), alarm.getUTCSeconds());
+        var diffeneceInMS = alarmTime.getTime() - (new Date()).getTime();
+
+        if (diffeneceInMS < 0) {
+            alert('Specified Time already passed!');
+            return;
+        }
+
+        alarmTimer=setTimeout(initAlarm, diffeneceInMS);
+
+        button.innerText="Cancel Alarm";
+        button.setAttribute('onclick','cancelAlarm(this);');
+    }
+
+    function cancelAlarm(button) {
+        button.innerText="Set Alarm";
+        button.setAttribute("onclick", "setAlarm(this);");
+        clearTimeout(alarmTimer);
+    }
+
+    function initAlarm() {
+        alarmSound.play();
+        message = new Notification("Alarm");
+        document.getElementById("alarmOptions").style.display="";
+    }
+
+    function stopAlarm(){
+        alarmSound.pause();
+        alarmSound.currentTime=0;
+        document.getElementById("alarmOptions").style.display="none";
+        cancelAlarm(document.getElementById("alarmButton"));
+
+    }
+</script>
+
+</html>

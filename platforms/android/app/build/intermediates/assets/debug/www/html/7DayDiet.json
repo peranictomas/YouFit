@@ -1,0 +1,83 @@
+{
+  "meals": {
+    "day": [
+      {
+        "d": {
+          "recipe": "Serve 4 ounces broiled flounder or sole with 2 sliced plum tomatoes sprinkled with 2 tablespoons grated Parmesan cheese, broiled until just golden. Eat with 1 cup cooked couscous and 1 cup steamed broccoli. Enjoy 1 fat-free pudding cup for dessert."
+        },
+        "l": {
+          "recipe": "Build a sandwich with 1 mini whole wheat pita, 3 ounces turkey breast, 1/2 roasted pepper, 1 teaspoon light mayonnaise, mustard, and lettuce. Serve with 1 stick part-skim mozzarella string cheese and 2 kiwis."
+        },
+        "b": {
+          "recipe": "Combine 3/4 cup bran flakes, 1 banana, and 1 cup fat-free milk in a bowl."
+        }
+      },
+      {
+        "d": {
+          "recipe": "Brush 4 ounces boneless, skinless chicken breast with barbecue sauce and grill. Combine 2 heaping cups of sautéed spinach with garlic, olive oil, and tomatoes and serve with 1/2 plain baked or sweet potato (as desired)."
+        },
+        "l": {
+          "recipe": "Heat up 1 cup vegetarian vegetable soup and serve with 1 veggie burger in a 100% whole-grain pita and 1 cup of grapes."
+        },
+        "b": {
+          "recipe": "Blend 1 cup frozen berries, 1/2 banana, and 8 ounces fat-free milk into a smoothie. Grab 1 or 2 hard-boiled eggs on your way out the door."
+        }
+      },
+      {
+        "d": {
+          "recipe": "Serve 4 ounces steamed shrimp with 1 baked potato topped with 3 tablespoons salsa and 1 tablespoon unsweetened Greek yogurt, plus 3 cups spinach, steamed. Finish the meal off with 1 ounce of chocolate or a 100- to 150-calorie ice cream bar."
+        },
+        "l": {
+          "recipe": "To make a chicken salad, toss 4 ounces shredded skinless roast chicken breast with 1/4 cup sliced red grapes, 1 tablespoon slivered almonds, 1 tablespoon light mayonnaise, and 1 tablespoon plain, unsweetened Greek yogurt. Serve over lettuce. Eat with 1 banana."
+        },
+        "b": {
+          "recipe": "In the microwave, cook 1/2 cup quick-cooking oats with low-fat or unsweetened soy milk. Add 1/2 apple (sliced or chopped), 1 teaspoon honey, and a pinch of cinnamon."
+        }
+      },
+      {
+        "d": {
+          "recipe": "Serve 3 ounces poached salmon with a slaw made by tossing 1 1/4 cups coleslaw mix and 2 sliced scallions with 1 tablespoon each of rice vinegar and olive oil. Add spices, herbs, and seasoning as desired. Pair with 3/4 cup of a 100% whole grain (like quinoa) and an apple on the side."
+        },
+        "l": {
+          "recipe": "Heat 1 cup tomato soup. Serve with a sandwich made with 1 mini whole wheat pita, 3 ounces thinly sliced roast beef, 1 teaspoon horseradish, mustard, tomato slices, and lettuce. Eat with 2 cups raw veggies and 1/4 cup of hummus."
+        },
+        "b": {
+          "recipe": "Top 1/2 toasted English muffin with 1/2 small apple, sliced, and 1 ounce shredded reduced-fat cheese, any type. Microwave 30 seconds on high. Serve with 2/3 cup plain, unsweetened Greek yogurt sprinkled with 1 tablespoon slivered almonds."
+        }
+      },
+      {
+        "d": {
+          "recipe": "Serve 3 ounces roasted pork tenderloin with 1 cup baked acorn squash, mashed with a pinch of cinnamon; 2 to 3 cups salad greens with 1 tablespoon of olive oil and as much vinegar as desired; and chocolate or an ice cream bar for dessert (100 to 150 calories)."
+        },
+        "l": {
+          "recipe": "Make a quesadilla by spreading 1/4 cup fat-free refried beans over a 100% stone-ground corn tortilla. Sprinkle on 1 ounce shredded reduced-fat cheese. Top with salsa and another tortilla; microwave 45 seconds on high. Serve with 1/2 cup low-fat cottage cheese topped with 2 clementines and cucumber spears."
+        },
+        "b": {
+          "recipe": "Combine 1 cup Cheerios, 1/2 cup berries, 1 tablespoon slivered almonds, and 6 ounces plain, unsweetened Greek yogurt in a bowl."
+        }
+      },
+      {
+        "d": {
+          "recipe": "Make jambalaya by combining 3/4 cup cooked brown rice; 1/2 cup corn; 2 ounces cooked turkey sausage, sliced; 1/3 cup salsa; and 1/4 cup no-salt-added black or navy beans. Heat through. Eat with 3 cups spinach sauteed with garlic in 1 tablespoon olive oil."
+        },
+        "l": {
+          "recipe": "Make a tuna pita with 1 mini whole wheat pita, 2 ounces water-packed light tuna, 1 tablespoon light mayonnaise, mustard, cucumber, and onion slices. Serve with 10 baby carrots and 2/3 cup plain, unsweetened Greek yogurt with a small pear."
+        },
+        "b": {
+          "recipe": "Toast 1 100% whole-grain frozen waffle, spread with 2 tablespoons nut butter, and top with 1 small sliced banana plus cinnamon and nutmeg. Serve with 8 ounces fat-free milk."
+        }
+      },
+      {
+        "d": {
+          "recipe": "Serve 3 ounces broiled or grilled flank steak with 1 baked sweet potato with 1 teaspoon butter; 1 cup steamed zucchini; and 1 1/2 cup berries."
+        },
+        "l": {
+          "recipe": "Make black bean salad by tossing 1/2 cup canned black beans, 1/2 cup mandarin orange sections, chopped red bell peppers, red onion, scallions, and any other desired veggies with 1 teaspoon vinegar. Serve over salad greens. Serve with 1 100% stone ground corn tortilla and a piece of fruit."
+        },
+        "b": {
+          "recipe": "Layer 1/2 toasted English muffin with 1 ounce reduced-fat cheese, sliced; 1 tomato slice; 1/2 cup steamed spinach, drained; and 1 poached egg. Serve with 1 grapefruit."
+        }
+      }
+    ]
+  }
+}

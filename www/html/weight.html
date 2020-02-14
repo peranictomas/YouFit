@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Circuit</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <style>
+        #mainPage{
+            background-color:  #D9D9D9;
+        }
+        .flex-container
+        {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            align-content: space-between;
+        }
+        .flex-container2
+        {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            align-content: space-between;
+        }
+        #output
+        {
+
+        }
+        .spacing{
+            margin-left: 5%;
+        }
+        img{
+            position: fixed;
+            top: 95%;
+            left: 50%;
+            margin-top: -486.4px;
+            margin-left: -256px;
+            z-index: -1;
+            opacity: 0.2;
+        }
+        .font{
+            font-family: "Arial Black", Gadget, sans-serif;
+            font-size: 1.2em;
+        }
+        .font2{
+            font-family: "Arial", Gadget, sans-serif;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+
+<body id="mainPage" >
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-left">
+    <a class="navbar-brand" href="../index.html"><i class="fas fa-heartbeat"></i> You.Fit</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="alarm.html">Alarm</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="stopwatch.html">Stopwatch</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="dumbbell.html">Workout</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="map.html">Map</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="diet.html">Diet</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<div class="flex-container2 font">
+    <div class="form-group">
+        <label for="user">Name:</label>
+        <input type="text" class="form-control" id="user">
+    </div>
+    <div class="form-group">
+        <label for="weight">Weight:</label>
+        <input type="number" min="0" class="form-control" id="weight">
+    </div>
+    <div class="form-group">
+        <label for="date">Date:</label>
+        <input class="form-control" type="date" id="date" name="trip-start" value="YYYY-MM-DD" min="2000-01-01" max=" " onkeydown="return false">
+    </div>
+</div>
+<br>
+<br>
+<div class="flex-container">
+    <button id="btn1" type="button" class="btn btn-info">Submit</button>
+    <button id="btn2" type="button" class="btn btn-warning spacing">Search</button>
+    <button id="btn3" type="button" class="btn btn-danger spacing">Clear Search</button>
+</div>
+<br>
+<br>
+<img class="center-fit" src="../img/scale.png">
+<div class="flex-container2">
+    <div id="output" class="font2">
+    </div>
+</div>
+<script type="text/javascript" src="../js/weight.js"></script>
+</body>
+</html>

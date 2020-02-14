@@ -1,0 +1,112 @@
+<html>
+<head>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="js/jquery/jquery-1.12.4.min.js" type="text/javascript"></script>
+    <link href="js/jquery-mobile/jquery.mobile-1.4.5.min.css" rel="stylesheet" type="text/css"/>
+    <script src="js/jquery-mobile/jquery.mobile-1.4.5.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>You.Fit</title>
+</head>
+
+<style>
+    #mainPage{
+        background-color: #D9D9D9;
+    }
+    .flex-container{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        align-content: space-between;
+    }
+    #font{
+        font-size: 6em;
+    }
+</style>
+
+<body id="mainPage">
+<div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-left">
+        <a class="navbar-brand" href="index.html"><i class="fas fa-heartbeat"></i> You.Fit</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+
+            </ul>
+            <span class="navbar-text">
+      Click on an icon below to get started
+    </span>
+        </div>
+    </nav>
+</div>
+<div id="font">
+    <br>
+    <div class="flex-container">
+        <i class="fas fa-clock" id="alarm"></i>
+        <i class="fas fa-stopwatch" id="stopwatch"></i>
+        <i class="fas fa-dumbbell" id="workout"></i>
+    </div>
+    <div class="flex-container">
+        <h4>Alarm</h4>
+        <h4>Stopwatch</h4>
+        <h4>Workout</h4>
+    </div>
+    <br>
+    <div class="flex-container">
+        <i id="map" class="fas fa-map-marked-alt"></i>
+        <i class="fas fa-weight" id="weight"></i>
+        <i class="fas fa-apple-alt" id="diet"></i>
+    </div>
+    <div class="flex-container">
+        <h4>Map</h4>
+        <h4>Weight</h4>
+        <h4>Diet</h4>
+    </div>
+    <br>
+    <div class="flex-container">
+        <i class="fas fa-user-alt" id="settings"></i>
+    </div>
+    <div class="flex-container">
+        <h4>Settings</h4>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $("#alarm").click(function (){
+            window.location.href="html/alarm.html";
+        });
+        $("#stopwatch").click(function (){
+            window.location.href="html/stopwatch.html";
+        });
+        $("#workout").click(function (){
+            window.location.href="html/dumbbell.html";
+        });
+        $("#map").click(function (){
+            window.location.href="html/map.html";
+        });
+        $("#weight").click(function (){
+            window.location.href="html/weight.html";
+        });
+        $("#diet").click(function (){
+            window.location.href="html/diet.html"
+        });
+        $("#settings").click(function (){
+
+        });
+    });
+</script>
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
